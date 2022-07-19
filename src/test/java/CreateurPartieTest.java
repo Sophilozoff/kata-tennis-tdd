@@ -11,7 +11,7 @@ public class CreateurPartieTest {
 
     private CreateurPartie createurPartie = new CreateurPartie();
     Partie partie = new Partie("test");
-    Joueur j1 = new Joueur("joueur1");
+    Joueur j1 = new Joueur("j1");
     Joueur j2 = new Joueur("j2");
 
     @BeforeEach
@@ -36,20 +36,29 @@ public class CreateurPartieTest {
     @Test
     @DisplayName("Devrait retourner deux joueurs qui ont le score a 0")
     public void joueursZeroPoint(){
-
+        assertEquals(0,this.j1.getPoint());
+        assertEquals(0,this.j2.getPoint());
     }
 
     @Test
     @DisplayName("Devrait retourner deux joueur avec 0 jeux gagnés")
-    public void JoueursZeroJeuxGagnes(){}
+    public void JoueursZeroJeuxGagnes(){
+        assertEquals(0,this.j1.getJeu());
+        assertEquals(0,this.j2.getJeu());
+    }
 
     @Test
     @DisplayName("Devrait retourner deux joueur avec 0 sets gagnés")
-    public void joueursZeroSetGagnes(){}
+    public void joueursZeroSetGagnes(){
+        assertEquals(0,this.j1.getSet());
+        assertEquals(0,this.j2.getSet());
+    }
 
     @Test
     @DisplayName("Devrait retourner une notification d'un point gagné pour le joueur1")
-    public void notificationJoueurGagneUnPoint(){}
+    public void notificationJoueurGagneUnPoint(){
+
+    }
 
     @Test
     @DisplayName("Devrait comptabiliser les point de 0 à 15, 15 à 30, 30 à 40")
