@@ -3,6 +3,7 @@ import models.Partie;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import services.CompteurDeScoreTennis;
 import services.CreateurPartie;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CreateurPartieTest {
 
     private CreateurPartie createurPartie = new CreateurPartie();
+    private CompteurDeScoreTennis compteurDeScoreTennis = new CompteurDeScoreTennis();
     Partie partie = createurPartie.createPartie("test");
     Joueur j1 = new Joueur("j1");
     Joueur j2 = new Joueur("j2");
@@ -56,8 +58,9 @@ public class CreateurPartieTest {
 
     @Test
     @DisplayName("Devrait retourner une notification d'un point gagné pour un joueur")
-    public void notificationJoueurGagneUnPoint(){
-
+    public void utilisateurAjoutePointAJoueur(){
+        compteurDeScoreTennis.ajoutPoint(j1);
+        assertEquals(1, j1.getPoint());
     }
 
     @Test
