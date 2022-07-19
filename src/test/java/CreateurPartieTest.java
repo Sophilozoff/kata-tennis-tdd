@@ -59,13 +59,22 @@ public class CreateurPartieTest {
     @Test
     @DisplayName("Devrait retourner une notification d'un point gagné pour un joueur")
     public void utilisateurAjoutePointAJoueur(){
+        int scoreJ1 = j1.getPoint();
         compteurDeScoreTennis.ajoutPoint(j1);
-        assertEquals(1, j1.getPoint());
+        assertTrue(scoreJ1 < j1.getPoint());
     }
 
     @Test
-    @DisplayName("Devrait comptabiliser les point de 0 à 15, 15 à 30, 30 à 40")
-    public void echelonPointGagnes(){}
+    @DisplayName("Devrait afficher les points de 0 à 15, 15 à 30, 30 à 40")
+    public void echelonPointGagnes(){
+        compteurDeScoreTennis.ajoutPoint(j1);
+        compteurDeScoreTennis.ajoutPoint(j2);
+        compteurDeScoreTennis.ajoutPoint(j2);
+        assertEquals(30,j2.getPoint());
+        compteurDeScoreTennis.ajoutPoint(j2);
+        assertEquals(15,j1.getPoint());
+        assertEquals(40,j2.getPoint());
+    }
 
     @Test
     @DisplayName("Devrait retourner un avantage pour le joueur1")
