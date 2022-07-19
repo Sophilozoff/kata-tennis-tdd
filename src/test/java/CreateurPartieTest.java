@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CreateurPartieTest {
 
     private CreateurPartie createurPartie = new CreateurPartie();
-    Partie partie = new Partie("test");
+    Partie partie = createurPartie.createPartie("test");
     Joueur j1 = new Joueur("j1");
     Joueur j2 = new Joueur("j2");
 
@@ -55,7 +55,7 @@ public class CreateurPartieTest {
     }
 
     @Test
-    @DisplayName("Devrait retourner une notification d'un point gagné pour le joueur1")
+    @DisplayName("Devrait retourner une notification d'un point gagné pour un joueur")
     public void notificationJoueurGagneUnPoint(){
 
     }

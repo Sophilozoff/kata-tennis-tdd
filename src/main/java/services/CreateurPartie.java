@@ -6,7 +6,6 @@ import models.Partie;
 public class CreateurPartie {
 
     public Partie createPartie(String nom){
-
         return new Partie(nom);
     }
 
@@ -16,5 +15,7 @@ public class CreateurPartie {
 
         return partie;
     }
+
+
 
 }
