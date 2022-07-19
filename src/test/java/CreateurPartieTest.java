@@ -7,7 +7,7 @@ import services.CreateurPartie;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Createurpartie {
+public class CreateurPartieTest {
 
     private CreateurPartie createurPartie = new CreateurPartie();
     Partie partie = new Partie("test");
@@ -35,7 +35,9 @@ public class Createurpartie {
 
     @Test
     @DisplayName("Devrait retourner deux joueurs qui ont le score a 0")
-    public void joueursZeroPoint(){}
+    public void joueursZeroPoint(){
+
+    }
 
     @Test
     @DisplayName("Devrait retourner deux joueur avec 0 jeux gagnés")
