@@ -5,8 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import services.CompteurDeScoreTennis;
 
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CompteurDeScoreTennisTest {
 
@@ -19,20 +18,21 @@ public class CompteurDeScoreTennisTest {
 
     @Test
     @DisplayName("Devrait retourner une partie sans joueur")
-    void createMatchShouldReturnNewMatch() {
+    public void createMatchShouldReturnNewMatch() {
         Partie nouvellePartie = this.compteurDeScoreTennis.createPartie();
 
         assertInstanceOf(Partie.class, nouvellePartie);
-        assertEquals(0, nouvellePartie.getJoueurs().size());
-
+        assertNull(nouvellePartie.getJoueurUn());
+        assertNull(nouvellePartie.getJoueurDeux());
     }
 
     @Test
     @DisplayName("Devrait retourner une partie avec 2 joueurs")
     public void creationPartieAvecJoueur(){
-        Partie partie = new Partie(new Joueur("J1"), new Joueur("J2"));
-        assertNotNull(partie.getJoueur1());
-        assertNotNull(partie.getJoueur2());
+        Partie partie = new Partie("premierePartie", new Joueur("J1"), new Joueur("J2"));
+
+        assertNotNull(partie.getJoueurUn());
+        assertNotNull(partie.getJoueurDeux());
     }
 
     @Test
