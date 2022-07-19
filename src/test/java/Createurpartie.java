@@ -22,7 +22,6 @@ public class Createurpartie {
     @Test
     @DisplayName("Devrait retourner une instance de partie avec un nom")
     public void createPartie() {
-
         assertInstanceOf(Partie.class, this.partie);
     }
 
