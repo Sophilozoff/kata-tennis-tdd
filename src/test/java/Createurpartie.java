@@ -3,33 +3,33 @@ import models.Partie;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import services.CompteurDeScoreTennis;
+import services.CreateurPartie;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CompteurDeScoreTennisTest {
+public class Createurpartie {
 
-    private CompteurDeScoreTennis compteurDeScoreTennis = new CompteurDeScoreTennis();
+    private CreateurPartie createurPartie = new CreateurPartie();
+    Partie partie = new Partie("test");
+    Joueur j1 = new Joueur("joueur1");
+    Joueur j2 = new Joueur("j2");
 
     @BeforeEach
-    void init() {
-
+    public void init() {
 
     }
 
     @Test
-    @DisplayName("Devrait retourner une instance de partie")
-    public void createMatchShouldReturnNewMatch() {
-        Partie nouvellePartie = this.compteurDeScoreTennis.createPartie();
+    @DisplayName("Devrait retourner une instance de partie avec un nom")
+    public void createPartie() {
 
-        assertInstanceOf(Partie.class, nouvellePartie);
+        assertInstanceOf(Partie.class, this.partie);
     }
 
     @Test
     @DisplayName("Devrait retourner une partie avec 2 joueurs")
-    public void creationPartieAvecJoueur(){
-        Partie partie = new Partie("premierePartie", new Joueur("J1"), new Joueur("J2"));
-
+    public void ajoutJoueurs(){
+        createurPartie.ajouterJoueurs(this.partie,this.j1, this.j2);
         assertNotNull(partie.getJoueurUn());
         assertNotNull(partie.getJoueurDeux());
     }

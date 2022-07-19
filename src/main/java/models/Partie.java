@@ -10,6 +10,10 @@ public class Partie {
     public Partie() {
     }
 
+    public Partie(String nom) {
+        this.nom = nom;
+    }
+
     public Partie(String nom, Joueur joueurUn, Joueur joueurDeux) {
         this.nom = nom;
         this.joueurUn = joueurUn;
