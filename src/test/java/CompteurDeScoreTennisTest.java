@@ -19,7 +19,7 @@ public class CompteurDeScoreTennisTest {
 
     @Test
     @DisplayName("Devrait retourner une instance de partie")
-    public void createMatchShouldReturnNewMatch() {
+    public void createPartieShouldReturnNewPartie() {
         Partie nouvellePartie = this.compteurDeScoreTennis.createPartie();
 
         assertInstanceOf(Partie.class, nouvellePartie);
