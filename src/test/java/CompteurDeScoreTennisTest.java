@@ -9,21 +9,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CompteurDeScoreTennisTest {
 
-    private CompteurDeScoreTennis compteurDeScoreTennis;
+    private CompteurDeScoreTennis compteurDeScoreTennis = new CompteurDeScoreTennis();
 
     @BeforeEach
     void init() {
-        this.compteurDeScoreTennis = new CompteurDeScoreTennis();
+
+
     }
 
     @Test
-    @DisplayName("Devrait retourner une partie sans joueur")
+    @DisplayName("Devrait retourner une instance de partie")
     public void createMatchShouldReturnNewMatch() {
         Partie nouvellePartie = this.compteurDeScoreTennis.createPartie();
 
         assertInstanceOf(Partie.class, nouvellePartie);
-        assertNull(nouvellePartie.getJoueurUn());
-        assertNull(nouvellePartie.getJoueurDeux());
     }
 
     @Test
