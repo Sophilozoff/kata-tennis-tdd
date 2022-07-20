@@ -99,6 +99,16 @@ public class CompteurDeScoreTennisTest {
     }
 
     @Test
+    @DisplayName("Devrait retourné un set gagné lorsque le nombre de jeux >=5 et que l'écart entre les joueurs est >=2")
+    public void joueurGagneAucunSetApresEgaliteDeJeuxA5() {
+        partie.setJeuDecisif(false);
+        partie.getJoueurUn().setJeu(5);
+        partie.getJoueurDeux().setJeu(6);
+        compteurDeScoreTennis.getScore(partie);
+        assertEquals(0, partie.getJoueurDeux().getSet());
+    }
+
+    @Test
     @DisplayName("Devrait retourner le mode jeux decisif => les joueurs ont 6 jeux gagnés")
     public void modeJeuDecisif() {
         partie.getJoueurUn().setJeu(6);
