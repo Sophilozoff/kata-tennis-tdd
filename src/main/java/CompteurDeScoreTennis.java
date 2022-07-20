@@ -23,12 +23,20 @@ public class CompteurDeScoreTennis {
     }
 
     public String getScore(Partie partie) {
+
+        if(partie.getJoueurUn().getJeu() == 2) {
+            return partie.getJoueurUn().getNom() + " vainqueur";
+        } else if ( partie.getJoueurDeux().getJeu() == 2) {
+            return partie.getJoueurDeux().getNom() + " vainqueur";
+        }
+        evaluerJeu(partie);
         if (!partie.isJeuDecisif()) {
             return evaluerPoint(partie);
         } else return evaluerPointJeuDecisif(partie);
+
     }
 
-    public String evaluerPoint(Partie partie) {
+    private String evaluerPoint(Partie partie) {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
         //gain jeu sans avantage
@@ -57,12 +65,13 @@ public class CompteurDeScoreTennis {
         return afficherPointEnCours(partie);
     }
 
-    public void evaluerJeu(Partie partie) {
+    private String evaluerJeu(Partie partie) {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
 
         if (j1.getJeu() == 6 && j2.getJeu() == 6) {
             partie.setJeuDecisif(true);
+            return "Jeu décisif à venir";
         }
 
         if (j1.getJeu() > 5 || j2.getJeu() > 5 && Math.abs(j1.getJeu() - j2.getJeu()) >= 2) {
@@ -73,10 +82,10 @@ public class CompteurDeScoreTennis {
             }
             partie.initJeux();
         }
-
+        return "Nouveau jeu à venir";
     }
 
-    public String evaluerPointJeuDecisif(Partie partie) {
+    private String evaluerPointJeuDecisif(Partie partie) {
 
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();

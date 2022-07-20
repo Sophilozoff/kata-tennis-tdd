@@ -9,9 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CreateurPartieTest {
 
     private CreateurPartie createurPartie = new CreateurPartie();
-    Partie partie = createurPartie.createPartie("test");
     Joueur j1 = new Joueur("j1");
     Joueur j2 = new Joueur("j2");
+    Partie partie = new Partie("test", j1, j2);
+
+    private CompteurDeScoreTennis compteurDeScoreTennis = new CompteurDeScoreTennis(partie);
 
     @BeforeEach
     public void init() {
@@ -57,6 +59,9 @@ public class CreateurPartieTest {
     @Test
     @DisplayName("Devrait retourné Partie Gagnée lorsque 2 sets sont gagnés par un joueur")
     public void joueurGagnePartie() {
+        j1.setJeu(2);
+
+        assertEquals(j1.getNom() + " vainqueur", compteurDeScoreTennis.getScore(partie));
     }
 
     @Test

@@ -41,7 +41,7 @@ public class CompteurDeScoreTennisTest {
         partie.getJoueurUn().setPoint(4);
         partie.getJoueurDeux().setPoint(3);
 
-        assertEquals(scoreFinalAttendu, compteurDeScoreTennis.evaluerPoint(partie));
+        assertEquals(scoreFinalAttendu, compteurDeScoreTennis.getScore(partie));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class CompteurDeScoreTennisTest {
         partie.getJoueurUn().setPoint(4);
         partie.getJoueurDeux().setPoint(4);
 
-        assertEquals("égalité", compteurDeScoreTennis.evaluerPoint(partie));
+        assertEquals("égalité", compteurDeScoreTennis.getScore(partie));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class CompteurDeScoreTennisTest {
     public void joueurGagneJeuSansAvantage() {
         partie.getJoueurUn().setPoint(4);
         partie.getJoueurDeux().setPoint(1);
-        compteurDeScoreTennis.evaluerPoint(partie);
+        compteurDeScoreTennis.getScore(partie);
         assertEquals(1, partie.getJoueurUn().getJeu());
     }
 
@@ -67,7 +67,7 @@ public class CompteurDeScoreTennisTest {
     public void joueurGagneJeuApresAvantage() {
         partie.getJoueurUn().setPoint(3);
         partie.getJoueurDeux().setPoint(5);
-        compteurDeScoreTennis.evaluerPoint(partie);
+        compteurDeScoreTennis.getScore(partie);
         assertEquals(1, partie.getJoueurDeux().getJeu());
     }
 
@@ -76,7 +76,7 @@ public class CompteurDeScoreTennisTest {
     public void joueurZeroPointApresJeuGagne() {
         partie.getJoueurUn().setPoint(3);
         partie.getJoueurDeux().setPoint(5);
-        assertEquals("0/0", compteurDeScoreTennis.evaluerPoint(partie));
+        assertEquals("0/0", compteurDeScoreTennis.getScore(partie));
     }
 
     @Test
@@ -84,7 +84,7 @@ public class CompteurDeScoreTennisTest {
     public void joueurGagneUnSet() {
         partie.getJoueurUn().setJeu(3);
         partie.getJoueurDeux().setJeu(6);
-        compteurDeScoreTennis.evaluerJeu(partie);
+        compteurDeScoreTennis.getScore(partie);
         assertEquals(1, partie.getJoueurDeux().getSet());
 
     }
@@ -95,7 +95,7 @@ public class CompteurDeScoreTennisTest {
         partie.setJeuDecisif(false);
         partie.getJoueurUn().setJeu(5);
         partie.getJoueurDeux().setJeu(7);
-        compteurDeScoreTennis.evaluerJeu(partie);
+        compteurDeScoreTennis.getScore(partie);
         assertEquals(1, partie.getJoueurDeux().getSet());
     }
 
@@ -104,7 +104,7 @@ public class CompteurDeScoreTennisTest {
     public void modeJeuDecisif() {
         partie.getJoueurUn().setJeu(6);
         partie.getJoueurDeux().setJeu(6);
-        compteurDeScoreTennis.evaluerJeu(partie);
+        compteurDeScoreTennis.getScore(partie);
         assertTrue(partie.isJeuDecisif());
     }
 
