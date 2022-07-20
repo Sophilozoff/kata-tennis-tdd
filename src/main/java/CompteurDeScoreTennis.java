@@ -3,25 +3,21 @@ import models.Partie;
 
 public class CompteurDeScoreTennis {
 
+    private Partie partie;
+
+    public CompteurDeScoreTennis(Partie partie) {
+        this.partie =partie;
+    }
+
     public void ajoutPoint(Joueur joueur) {
         joueur.ajoutPoint();
     }
 
-    public void reinitialisePoint(Partie partie) {
-        partie.getJoueurUn().setPoint(0);
-        partie.getJoueurDeux().setPoint(0);
-    }
-
-
     public void ajoutJeu(Joueur joueur) {
         joueur.ajoutJeu();
     }
-    public void reinitialiseJeu(Partie partie){
-        partie.getJoueurUn().setJeu(0);
-        partie.getJoueurDeux().setJeu(0);
-    }
 
-    public void ajoutSet(Joueur joueur){
+        public void ajoutSet(Joueur joueur){
         joueur.ajoutSet();
 
     }
@@ -29,25 +25,22 @@ public class CompteurDeScoreTennis {
     public String evaluerPoint(Partie partie) {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
-
-
-
         //gain jeu sans avantage
         if (j1.getPoint() == 4 &&  j2.getPoint() < 3) {
             ajoutJeu(j1);
-            reinitialisePoint(partie);
+            partie.initPoint();
         } else if (j2.getPoint() == 4 &&  j1.getPoint() < 3) {
             ajoutJeu(j2);
-            reinitialisePoint(partie);
+            partie.initPoint();
         }
 
         //gain jeu après avantage
         if (j1.getPoint() == 5 &&  j2.getPoint() == 3) {
             ajoutJeu(j1);
-            reinitialisePoint(partie);
+            partie.initPoint();
         } else if (j2.getPoint() == 5 &&  j1.getPoint() == 3) {
             ajoutJeu(j2);
-            reinitialisePoint(partie);
+            partie.initPoint();
         }
 
         //(avantage - avantage devient 40/40)
@@ -61,23 +54,15 @@ public class CompteurDeScoreTennis {
     public void evaluerJeu(Partie partie){
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
-        int jeuJ1 = j1.getJeu();
-        int jeuJ2 = j2.getJeu();
 
-
-        //si une des deux joueur a 6 jeux et que l'autre a 4 ou mois
-        //si Setj1 >5 et math.abs(jeuJ1+jeuJ2)
         if (j1.getJeu()>5 || j2.getJeu()>5 && Math.abs(j1.getJeu()-j2.getJeu())>=2){
             if (j1.getJeu() == 6 ) {
                 ajoutSet(j1);
-                reinitialiseJeu(partie);
             } else if (j2.getJeu() == 6) {
                 ajoutSet(j2);
-                reinitialiseJeu(partie);
             }
+            partie.initJeux();
         }
-
-        //alors joueur gagne un set
 
     }
 
@@ -87,19 +72,22 @@ public class CompteurDeScoreTennis {
         Joueur j2 = partie.getJoueurDeux();
         //(si 40/40 : égalité)
         if (j1.getPoint() == 3 && j2.getPoint() == 3) {
-            return afficherPoint(5);
+            return afficherEgalite();
         } else if (j1.getPoint() == 4 || j2.getPoint() == 4) {
             if (j1.getPoint() == 4) { //(avantageJ1)
-                return afficherPoint(j1.getPoint()) + partie.getJoueurUn().getNom();
+                return afficherPoint(j1) + partie.getJoueurUn().getNom();
             } else {//(avantageJ2)
-                return afficherPoint(j2.getPoint()) + partie.getJoueurDeux().getNom();
+                return afficherPoint(j2) + partie.getJoueurDeux().getNom();
             }
         } else {
-            return afficherPoint(j1.getPoint()) + "/" + afficherPoint(j2.getPoint());
+            return afficherPoint(j1) + "/" + afficherPoint(j2);
         }
     }
 
-    private String afficherPoint(int point) {
+
+    private String afficherPoint(Joueur joueur) {
+        int point = joueur.getPoint();
+
         String pointFinal = "";
         switch (point) {
             case 0:
@@ -115,14 +103,15 @@ public class CompteurDeScoreTennis {
                 pointFinal = "40";
                 break;
             case 4:
-                pointFinal = "avantage";
-                break;
-            case 5:
-                pointFinal = "égalité";
+                pointFinal = "avantage ";
                 break;
 
         }
         return pointFinal;
+    }
+
+    private String afficherEgalite(){
+        return "égalité";
     }
 
 

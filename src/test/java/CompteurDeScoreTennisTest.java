@@ -8,10 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CompteurDeScoreTennisTest {
 
-    private CompteurDeScoreTennis compteurDeScoreTennis = new CompteurDeScoreTennis();
+
     Joueur j1 = new Joueur("j1");
     Joueur j2 = new Joueur("j2");
     Partie partie = new Partie("test", j1, j2);
+    private CompteurDeScoreTennis compteurDeScoreTennis = new CompteurDeScoreTennis(partie);
 
 
     @Test
@@ -35,7 +36,7 @@ public class CompteurDeScoreTennisTest {
     @Test
     @DisplayName("Devrait retourner un avantage pour le joueur1")
     public void joueurGagnePointPourAvantage() {
-        String scoreFinalAttendu = "avantage" + partie.getJoueurUn().getNom();
+        String scoreFinalAttendu = "avantage " + partie.getJoueurUn().getNom();
         partie.getJoueurUn().setPoint(4);
         partie.getJoueurDeux().setPoint(3);
 
@@ -93,14 +94,14 @@ public class CompteurDeScoreTennisTest {
     @Test
     @DisplayName("Devrait retourné un set gagné lorsque le nombre de jeux >=5 et que l'écart entre les joueurs est >=2")
     public void joueurGagneUnSetApresEgaliteDeJeux() {
-            partie.getJoueurUn().setJeu(3);
-            partie.getJoueurDeux().setJeu(6);
+            partie.getJoueurUn().setJeu(5);
+            partie.getJoueurDeux().setJeu(7);
         compteurDeScoreTennis.evaluerJeu(partie);
         assertEquals(1,partie.getJoueurDeux().getSet());
     }
 
     @Test
-    @DisplayName("Devrait retourner le mode jeux decisif => lex joueurs ont 6 jeux gagnés")
+    @DisplayName("Devrait retourner le mode jeux decisif => les joueurs ont 6 jeux gagnés")
     public void modeJeuDecisif() {
     }
 
