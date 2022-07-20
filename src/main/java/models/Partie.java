@@ -5,6 +5,7 @@ public class Partie {
     private String nom;
     private Joueur joueurUn;
     private Joueur joueurDeux;
+    private boolean jeuDecisif= false;
 
 
     public Partie() {
@@ -44,6 +45,13 @@ public class Partie {
         this.joueurDeux = joueurDeux;
     }
 
+    public boolean isJeuDecisif() {
+        return jeuDecisif;
+    }
+
+    public void setJeuDecisif(boolean jeuDecisif) {
+        this.jeuDecisif = jeuDecisif;
+    }
     public void initPoint(){
         joueurUn.initPoint();
         joueurDeux.initPoint();

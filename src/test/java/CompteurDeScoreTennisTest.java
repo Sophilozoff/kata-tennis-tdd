@@ -100,6 +100,10 @@ public class CompteurDeScoreTennisTest {
     @Test
     @DisplayName("Devrait retourner le mode jeux decisif => les joueurs ont 6 jeux gagnés")
     public void modeJeuDecisif() {
+        partie.getJoueurUn().setJeu(6);
+        partie.getJoueurDeux().setJeu(6);
+        compteurDeScoreTennis.evaluerJeu(partie);
+        assertTrue(partie.isJeuDecisif());
     }
 
     @Test

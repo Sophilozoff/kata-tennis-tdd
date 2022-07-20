@@ -55,6 +55,10 @@ public class CompteurDeScoreTennis {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
 
+        if (j1.getJeu()==6 && j2.getJeu()==6){
+            partie.setJeuDecisif(true);
+        }
+
         if (j1.getJeu()>5 || j2.getJeu()>5 && Math.abs(j1.getJeu()-j2.getJeu())>=2){
             if (j1.getJeu() >= 6 ) {
                 ajoutSet(j1);
@@ -113,5 +117,12 @@ public class CompteurDeScoreTennis {
         return "égalité";
     }
 
+    public String afficheModeJeuDecisif(){
+        return "JEU DECISIF";
+    }
+
+//    private boolean jeuDecisif(Partie partie){
+//        return partie.getJoueurDeux().getJeu() == partie.getJoueurDeux().getJeu();
+//    }
 
 }
