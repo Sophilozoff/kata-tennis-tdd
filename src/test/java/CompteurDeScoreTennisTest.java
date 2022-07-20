@@ -18,6 +18,7 @@ public class CompteurDeScoreTennisTest {
     @Test
     @DisplayName("Devrait retourner une notification d'un point gagné pour un joueur")
     public void utilisateurAjoutePointAJoueur() {
+        partie.setJeuDecisif(false);
         int scoreJ1 = j1.getPoint();
         compteurDeScoreTennis.ajoutPoint(j1);
         assertTrue(scoreJ1 < j1.getPoint());
@@ -93,7 +94,7 @@ public class CompteurDeScoreTennisTest {
     public void joueurGagneUnSetApresEgaliteDeJeux() {
             partie.getJoueurUn().setJeu(5);
             partie.getJoueurDeux().setJeu(7);
-        compteurDeScoreTennis.evaluerJeu(partie);
+        compteurDeScoreTennis.getScore(partie);
         assertEquals(1,partie.getJoueurDeux().getSet());
     }
 
@@ -109,11 +110,16 @@ public class CompteurDeScoreTennisTest {
     @Test
     @DisplayName("Devrait ajouter 1 point en jeu décisif")
     public void ajouteUnPointJeuDecisif() {
+        partie.setJeuDecisif(true);
+        compteurDeScoreTennis.ajoutPoint(j1);
+        compteurDeScoreTennis.getScore(partie);
+        assertEquals(1,j1.getPoint());
     }
 
     @Test
     @DisplayName("Devrait ajouter les points 1 à 1 jusqu'à 7 en jeu décisif")
     public void ajoutePointUnParUnJeuDecisif() {
+
     }
 
     @Test

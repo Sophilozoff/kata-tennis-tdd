@@ -22,6 +22,12 @@ public class CompteurDeScoreTennis {
 
     }
 
+    public void getScore(Partie partie){
+        if(!partie.isJeuDecisif()){
+            evaluerJeu(partie);
+        }else evaluerJeuDecisif(partie);
+    }
+
     public String evaluerPoint(Partie partie) {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
@@ -67,6 +73,10 @@ public class CompteurDeScoreTennis {
             }
             partie.initJeux();
         }
+
+    }
+
+    public void evaluerJeuDecisif(Partie partie){
 
     }
 
