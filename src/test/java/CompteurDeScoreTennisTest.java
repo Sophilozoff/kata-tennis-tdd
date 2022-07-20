@@ -44,12 +44,26 @@ public class CompteurDeScoreTennisTest {
     }
 
     @Test
-    @DisplayName("Devrait retourner 2 joueurs a égalité")
+    @DisplayName("Devrait retourner 2 joueurs à nouveau à égalité")
     public void joueurPerdSonAvantage() {
+        partie.getJoueurUn().setPoint(4);
+        partie.getJoueurDeux().setPoint(4);
+
+        assertEquals("égalité", compteurDeScoreTennis.evaluerPoint(partie));
     }
 
     @Test
-    @DisplayName("Devrait retourner un jeu gagné suite à un avantage")
+    @DisplayName("Devrait retourner un jeu gagné suite à une victoire sans avantage")
+    public void joueurGagneJeuSansAvantage() {
+        partie.getJoueurUn().setPoint(4);
+        partie.getJoueurDeux().setPoint(1);
+        compteurDeScoreTennis.evaluerPoint(partie);
+        assertEquals(1, partie.getJoueurUn().getJeu());
+        assertEquals("0/0", compteurDeScoreTennis.evaluerPoint(partie));
+    }
+
+    @Test
+    @DisplayName("Devrait retourner un jeu gagné suite à une victoire après avantage")
     public void joueurGagneJeuApresAvantage() {
     }
 

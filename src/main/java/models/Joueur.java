@@ -46,4 +46,8 @@ public class Joueur {
     public void ajoutPoint() {
         this.point += 1;
     }
+
+    public void ajoutJeu() {
+        this.jeu += 1;
+    }
 }
