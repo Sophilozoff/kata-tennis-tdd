@@ -1,5 +1,3 @@
-package services;
-
 import models.Joueur;
 import models.Partie;
 
