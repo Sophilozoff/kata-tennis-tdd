@@ -7,16 +7,23 @@ public class CompteurDeScoreTennis {
         joueur.ajoutPoint();
     }
 
-    public String affichagePoint(Partie partie){
-       Joueur j1 = partie.getJoueurUn();
-       Joueur j2 = partie.getJoueurDeux();
+    public String evaluerPoint(Partie partie){
+      Joueur j1 = partie.getJoueurUn();
+      Joueur j2 = partie.getJoueurDeux();
 
-       String scoreFinal = evaluerPoint(j1.getPoint()) + "/" + evaluerPoint(j2.getPoint());
-       return scoreFinal;
+       if (j1.getPoint() == 4 || j2.getPoint() == 4){
+           if(j1.getPoint() == 4){
+               return afficherPoint(j1.getPoint()) + partie.getJoueurUn().getNom();
+           } else {
+               return afficherPoint(j2.getPoint()) + partie.getJoueurDeux().getNom();
+           }
+       }else {
+           return afficherPoint(j1.getPoint()) + "/" + afficherPoint(j2.getPoint());
+       }
 
     }
 
-    private String evaluerPoint(int point) {
+    private String afficherPoint(int point) {
         String pointFinal = "";
         switch(point){
             case 0:

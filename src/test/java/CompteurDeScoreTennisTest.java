@@ -30,7 +30,7 @@ public class CompteurDeScoreTennisTest {
         partie.getJoueurUn().setPoint(1);
         partie.getJoueurDeux().setPoint(3);
 
-        assertEquals(scoreFinalAttendu, compteurDeScoreTennis.affichagePoint(partie));
+        assertEquals(scoreFinalAttendu, compteurDeScoreTennis.evaluerPoint(partie));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class CompteurDeScoreTennisTest {
         partie.getJoueurUn().setPoint(4);
         partie.getJoueurDeux().setPoint(3);
 
-        assertEquals(scoreFinalAttendu, compteurDeScoreTennis.affichagePoint(partie));
+        assertEquals(scoreFinalAttendu, compteurDeScoreTennis.evaluerPoint(partie));
     }
 
     @Test
