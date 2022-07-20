@@ -42,4 +42,8 @@ public class Joueur {
     public void setSet(int set) {
         this.set = set;
     }
+
+    public void ajoutPoint() {
+        this.point += 1;
+    }
 }
