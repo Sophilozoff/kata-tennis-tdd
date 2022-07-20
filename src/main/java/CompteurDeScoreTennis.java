@@ -21,11 +21,20 @@ public class CompteurDeScoreTennis {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
 
-
+        //gain jeu sans avantage
         if (j1.getPoint() == 4 &&  j2.getPoint() < 3) {
             ajoutJeu(j1);
             reinitialisePoint(partie);
         } else if (j2.getPoint() == 4 &&  j1.getPoint() < 3) {
+            ajoutJeu(j2);
+            reinitialisePoint(partie);
+        }
+
+        //gain jeu après avantage
+        if (j1.getPoint() == 5 &&  j2.getPoint() == 3) {
+            ajoutJeu(j1);
+            reinitialisePoint(partie);
+        } else if (j2.getPoint() == 5 &&  j1.getPoint() == 3) {
             ajoutJeu(j2);
             reinitialisePoint(partie);
         }

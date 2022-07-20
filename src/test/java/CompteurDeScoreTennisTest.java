@@ -65,6 +65,11 @@ public class CompteurDeScoreTennisTest {
     @Test
     @DisplayName("Devrait retourner un jeu gagné suite à une victoire après avantage")
     public void joueurGagneJeuApresAvantage() {
+        partie.getJoueurUn().setPoint(3);
+        partie.getJoueurDeux().setPoint(5);
+        compteurDeScoreTennis.evaluerPoint(partie);
+        assertEquals(1, partie.getJoueurDeux().getJeu());
+        assertEquals("0/0", compteurDeScoreTennis.evaluerPoint(partie));
     }
 
     @Test
