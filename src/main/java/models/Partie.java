@@ -17,18 +17,10 @@ public class Partie {
         this.nom = nom;
     }
 
-    public Partie(String nom, Joueur joueurUn, Joueur joueurDeux) {
-        this.nom = nom;
+    public Partie(Joueur joueurUn, Joueur joueurDeux) {
+
         this.joueurUn = joueurUn;
         this.joueurDeux = joueurDeux;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
     }
 
     public Joueur getJoueurUn() {

@@ -8,12 +8,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CreateurPartieTest {
 
-    private CreateurPartie createurPartie = new CreateurPartie();
+    private final CreateurPartie createurPartie = new CreateurPartie();
     Joueur j1 = new Joueur("j1");
     Joueur j2 = new Joueur("j2");
-    Partie partie = new Partie("test", j1, j2);
+    Partie partie = new Partie(j1, j2);
 
-    private CompteurDeScoreTennis compteurDeScoreTennis = new CompteurDeScoreTennis(partie);
+    private final CompteurDeScoreTennis compteurDeScoreTennis = new CompteurDeScoreTennis(partie);
 
     @BeforeEach
     public void init() {

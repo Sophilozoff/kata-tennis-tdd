@@ -54,27 +54,23 @@ public class CompteurDeScoreTennis {
         return afficherPointEnCours(partie);
     }
 
-    private String evaluerJeu(Partie partie) {
+    private void evaluerJeu(Partie partie) {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
 
         if (j1.getJeu() == 6 && j2.getJeu() == 6) {
             partie.setJeuDecisif(true);
-            return "Jeu décisif à venir";
         }
 
         if (Math.abs(j1.getJeu() - j2.getJeu()) >= 2) {
             if (j1.getJeu() >= 6) {
                 ajoutSet(j1);
-                return "J1 gagne le jeu";
             } else if (j2.getJeu() >= 6) {
                 ajoutSet(j2);
-                return "J2 gagne le jeu";
 
             }
             partie.initJeux();
         }
-        return "Nouveau jeu à venir";
     }
 
     private String evaluerPointJeuDecisif(Partie partie) {
@@ -138,11 +134,6 @@ public class CompteurDeScoreTennis {
     private String afficherEgalite() {
         return "égalité";
     }
-
-    private String afficheModeJeuDecisif() {
-        return "JEU DECISIF";
-    }
-
 
     public void ajoutPoint(Joueur joueur) {
         if(!partie.isFinie()){

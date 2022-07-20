@@ -10,7 +10,7 @@ public class CompteurDeScoreTennisTest {
 
     Joueur j1 = new Joueur("j1");
     Joueur j2 = new Joueur("j2");
-    Partie partie = new Partie("test", j1, j2);
+    Partie partie = new Partie( j1, j2);
     private final CompteurDeScoreTennis compteurDeScoreTennis = new CompteurDeScoreTennis(partie);
 
 
