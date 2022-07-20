@@ -6,7 +6,7 @@ public class CompteurDeScoreTennis {
     private Partie partie;
 
     public CompteurDeScoreTennis(Partie partie) {
-        this.partie =partie;
+        this.partie = partie;
     }
 
     public void ajoutPoint(Joueur joueur) {
@@ -17,13 +17,13 @@ public class CompteurDeScoreTennis {
         joueur.ajoutJeu();
     }
 
-        public void ajoutSet(Joueur joueur){
+    public void ajoutSet(Joueur joueur) {
         joueur.ajoutSet();
 
     }
 
-    public String getScore(Partie partie){
-        if(!partie.isJeuDecisif()){
+    public String getScore(Partie partie) {
+        if (!partie.isJeuDecisif()) {
             return evaluerPoint(partie);
         } else return evaluerPointJeuDecisif(partie);
     }
@@ -32,19 +32,19 @@ public class CompteurDeScoreTennis {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
         //gain jeu sans avantage
-        if (j1.getPoint() == 4 &&  j2.getPoint() < 3) {
+        if (j1.getPoint() == 4 && j2.getPoint() < 3) {
             ajoutJeu(j1);
             partie.initPoint();
-        } else if (j2.getPoint() == 4 &&  j1.getPoint() < 3) {
+        } else if (j2.getPoint() == 4 && j1.getPoint() < 3) {
             ajoutJeu(j2);
             partie.initPoint();
         }
 
         //gain jeu après avantage
-        if (j1.getPoint() == 5 &&  j2.getPoint() == 3) {
+        if (j1.getPoint() == 5 && j2.getPoint() == 3) {
             ajoutJeu(j1);
             partie.initPoint();
-        } else if (j2.getPoint() == 5 &&  j1.getPoint() == 3) {
+        } else if (j2.getPoint() == 5 && j1.getPoint() == 3) {
             ajoutJeu(j2);
             partie.initPoint();
         }
@@ -54,19 +54,19 @@ public class CompteurDeScoreTennis {
             j1.setPoint(3);
             j2.setPoint(3);
         }
-       return afficherPointEnCours(partie);
+        return afficherPointEnCours(partie);
     }
 
-    public void evaluerJeu(Partie partie){
+    public void evaluerJeu(Partie partie) {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
 
-        if (j1.getJeu()==6 && j2.getJeu()==6){
+        if (j1.getJeu() == 6 && j2.getJeu() == 6) {
             partie.setJeuDecisif(true);
         }
 
-        if (j1.getJeu()>5 || j2.getJeu()>5 && Math.abs(j1.getJeu()-j2.getJeu())>=2){
-            if (j1.getJeu() >= 6 ) {
+        if (j1.getJeu() > 5 || j2.getJeu() > 5 && Math.abs(j1.getJeu() - j2.getJeu()) >= 2) {
+            if (j1.getJeu() >= 6) {
                 ajoutSet(j1);
             } else if (j2.getJeu() >= 6) {
                 ajoutSet(j2);
@@ -76,14 +76,25 @@ public class CompteurDeScoreTennis {
 
     }
 
-    public String evaluerPointJeuDecisif(Partie partie){
+    public String evaluerPointJeuDecisif(Partie partie) {
 
+        Joueur j1 = partie.getJoueurUn();
+        Joueur j2 = partie.getJoueurDeux();
+
+        if (j1.getPoint() >= 7 || j2.getPoint() >= 7 && Math.abs(j1.getPoint() - j2.getPoint()) >= 2) {
+            if (j1.getPoint() >= 7) {
+                ajoutSet(j1);
+            } else if (j2.getPoint() >= 7) {
+                ajoutSet(j2);
+            }
+            partie.initJeux();
+        }
         return partie.getJoueurUn().getPoint() + "/" + partie.getJoueurDeux().getPoint();
 
     }
 
 
-    private String afficherPointEnCours(Partie partie){
+    private String afficherPointEnCours(Partie partie) {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
         //(si 40/40 : égalité)
@@ -125,11 +136,11 @@ public class CompteurDeScoreTennis {
         return pointFinal;
     }
 
-    private String afficherEgalite(){
+    private String afficherEgalite() {
         return "égalité";
     }
 
-    public String afficheModeJeuDecisif(){
+    public String afficheModeJeuDecisif() {
         return "JEU DECISIF";
     }
 

@@ -82,20 +82,20 @@ public class CompteurDeScoreTennisTest {
     @Test
     @DisplayName("Devrait retourner un set gagné lorsque 6 jeux gagnés contre 4 ou moins")
     public void joueurGagneUnSet() {
-            partie.getJoueurUn().setJeu(3);
-            partie.getJoueurDeux().setJeu(6);
+        partie.getJoueurUn().setJeu(3);
+        partie.getJoueurDeux().setJeu(6);
         compteurDeScoreTennis.evaluerJeu(partie);
-        assertEquals(1,partie.getJoueurDeux().getSet());
+        assertEquals(1, partie.getJoueurDeux().getSet());
 
     }
 
     @Test
     @DisplayName("Devrait retourné un set gagné lorsque le nombre de jeux >=5 et que l'écart entre les joueurs est >=2")
     public void joueurGagneUnSetApresEgaliteDeJeux() {
-            partie.getJoueurUn().setJeu(5);
-            partie.getJoueurDeux().setJeu(7);
+        partie.getJoueurUn().setJeu(5);
+        partie.getJoueurDeux().setJeu(7);
         compteurDeScoreTennis.getScore(partie);
-        assertEquals(1,partie.getJoueurDeux().getSet());
+        assertEquals(1, partie.getJoueurDeux().getSet());
     }
 
     @Test
@@ -113,7 +113,7 @@ public class CompteurDeScoreTennisTest {
         partie.setJeuDecisif(true);
         compteurDeScoreTennis.ajoutPoint(j1);
         compteurDeScoreTennis.getScore(partie);
-        assertEquals(1,j1.getPoint());
+        assertEquals(1, j1.getPoint());
     }
 
     @Test
@@ -131,6 +131,11 @@ public class CompteurDeScoreTennisTest {
     @DisplayName("Devrait retourner set gagné pour un joueur lorsque ses points en jeux décisif >= 7 et un ecart de " +
             "point avec l'autre joueur")
     public void joueurGagneUnSetApresJeuDecisif() {
+        partie.setJeuDecisif(true);
+        partie.getJoueurUn().setPoint(7);
+        partie.getJoueurDeux().setPoint(5);
+        compteurDeScoreTennis.getScore(partie);
+        assertEquals(1, partie.getJoueurUn().getSet());
     }
 
 }
