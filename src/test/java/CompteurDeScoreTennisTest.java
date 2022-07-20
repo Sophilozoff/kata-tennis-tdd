@@ -14,7 +14,6 @@ public class CompteurDeScoreTennisTest {
     Partie partie = new Partie("test", j1, j2);
 
 
-
     @Test
     @DisplayName("Devrait retourner une notification d'un point gagné pour un joueur")
     public void utilisateurAjoutePointAJoueur() {
@@ -81,6 +80,13 @@ public class CompteurDeScoreTennisTest {
     @Test
     @DisplayName("Devrait retourner un set gagné lorsque 6 jeux gagnés contre 4 ou moins")
     public void joueurGagneUnSet() {
+        for (int i = 0; i < 6; i++) {
+            partie.getJoueurUn().setPoint(3);
+            partie.getJoueurDeux().setPoint(5);
+        }
+        compteurDeScoreTennis.evaluerJeu(partie);
+        assertEquals(1,partie.getJoueurDeux().getSet());
+
     }
 
     @Test

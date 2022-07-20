@@ -50,4 +50,8 @@ public class Joueur {
     public void ajoutJeu() {
         this.jeu += 1;
     }
+
+    public void ajoutSet(){
+        this.set +=1;
+    }
 }

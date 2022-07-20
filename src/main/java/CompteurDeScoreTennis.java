@@ -16,10 +16,21 @@ public class CompteurDeScoreTennis {
     public void ajoutJeu(Joueur joueur) {
         joueur.ajoutJeu();
     }
+    public void reinitialiseJeu(Partie partie){
+        partie.getJoueurUn().setJeu(0);
+        partie.getJoueurDeux().setJeu(0);
+    }
+
+    public void ajoutSet(Joueur joueur){
+        joueur.ajoutSet();
+
+    }
 
     public String evaluerPoint(Partie partie) {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
+
+
 
         //gain jeu sans avantage
         if (j1.getPoint() == 4 &&  j2.getPoint() < 3) {
@@ -46,6 +57,25 @@ public class CompteurDeScoreTennis {
         }
        return afficherPointEnCours(partie);
     }
+
+    public  evaluerJeu(Partie partie){
+        Joueur j1 = partie.getJoueurUn();
+        Joueur j2 = partie.getJoueurDeux();
+        int jeuJ1 = j1.getJeu();
+        int jeuJ2 = j2.getJeu();
+
+        //si une des deux joueur a 6 jeux et que l'autre a 4 ou mois
+        if (j1.getJeu() == 6 &&  j2.getJeu() < 4) {
+            ajoutSet(j1);
+            reinitialiseJeu(partie);
+        } else if (j2.getJeu() == 6 &&  j1.getJeu() < 4) {
+            ajoutSet(j2);
+            reinitialiseJeu(partie);
+        }
+        //alors joueur gagne un set
+
+    }
+
 
     private String afficherPointEnCours(Partie partie){
         Joueur j1 = partie.getJoueurUn();
