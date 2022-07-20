@@ -71,4 +71,5 @@ public class Partie {
         joueurUn.initJeu();
         joueurDeux.initJeu();
     }
+
 }

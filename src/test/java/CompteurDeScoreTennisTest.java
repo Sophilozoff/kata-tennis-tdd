@@ -11,7 +11,7 @@ public class CompteurDeScoreTennisTest {
     Joueur j1 = new Joueur("j1");
     Joueur j2 = new Joueur("j2");
     Partie partie = new Partie("test", j1, j2);
-    private CompteurDeScoreTennis compteurDeScoreTennis = new CompteurDeScoreTennis(partie);
+    private final CompteurDeScoreTennis compteurDeScoreTennis = new CompteurDeScoreTennis(partie);
 
 
     @Test
@@ -86,7 +86,6 @@ public class CompteurDeScoreTennisTest {
         partie.getJoueurDeux().setJeu(6);
         compteurDeScoreTennis.getScore(partie);
         assertEquals(1, partie.getJoueurDeux().getSet());
-
     }
 
     @Test

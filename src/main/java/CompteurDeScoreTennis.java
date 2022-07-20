@@ -3,26 +3,10 @@ import models.Partie;
 
 public class CompteurDeScoreTennis {
 
-    private Partie partie;
+    private final Partie partie;
 
     public CompteurDeScoreTennis(Partie partie) {
         this.partie = partie;
-    }
-
-    public void ajoutPoint(Joueur joueur) {
-        if(!partie.isFinie()){
-            joueur.ajoutPoint();
-        }
-
-    }
-
-    public void ajoutJeu(Joueur joueur) {
-        joueur.ajoutJeu();
-    }
-
-    public void ajoutSet(Joueur joueur) {
-        joueur.ajoutSet();
-
     }
 
     public String getScore(Partie partie) {
@@ -82,8 +66,11 @@ public class CompteurDeScoreTennis {
         if (Math.abs(j1.getJeu() - j2.getJeu()) >= 2) {
             if (j1.getJeu() >= 6) {
                 ajoutSet(j1);
+                return "J1 gagne le jeu";
             } else if (j2.getJeu() >= 6) {
                 ajoutSet(j2);
+                return "J2 gagne le jeu";
+
             }
             partie.initJeux();
         }
@@ -107,7 +94,6 @@ public class CompteurDeScoreTennis {
 
     }
 
-
     private String afficherPointEnCours(Partie partie) {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
@@ -124,7 +110,6 @@ public class CompteurDeScoreTennis {
             return afficherPoint(j1) + "/" + afficherPoint(j2);
         }
     }
-
 
     private String afficherPoint(Joueur joueur) {
         int point = joueur.getPoint();
@@ -154,12 +139,23 @@ public class CompteurDeScoreTennis {
         return "égalité";
     }
 
-    public String afficheModeJeuDecisif() {
+    private String afficheModeJeuDecisif() {
         return "JEU DECISIF";
     }
 
-//    private boolean jeuDecisif(Partie partie){
-//        return partie.getJoueurDeux().getJeu() == partie.getJoueurDeux().getJeu();
-//    }
+
+    public void ajoutPoint(Joueur joueur) {
+        if(!partie.isFinie()){
+            joueur.ajoutPoint();
+        }
+    }
+
+    private void ajoutJeu(Joueur joueur) {
+        joueur.ajoutJeu();
+    }
+
+    public void ajoutSet(Joueur joueur) {
+        joueur.ajoutSet();
+    }
 
 }
