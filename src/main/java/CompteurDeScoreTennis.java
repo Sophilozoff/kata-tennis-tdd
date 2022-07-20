@@ -68,10 +68,10 @@ public class CompteurDeScoreTennis {
         //si une des deux joueur a 6 jeux et que l'autre a 4 ou mois
         //si Setj1 >5 et math.abs(jeuJ1+jeuJ2)
         if (j1.getJeu()>5 || j2.getJeu()>5 && Math.abs(j1.getJeu()-j2.getJeu())>=2){
-            if (j1.getJeu() == 6 ) {
+            if (j1.getJeu() > 6 ) {
                 ajoutSet(j1);
                 reinitialiseJeu(partie);
-            } else if (j2.getJeu() == 6) {
+            } else if (j2.getJeu() > 6) {
                 ajoutSet(j2);
                 reinitialiseJeu(partie);
             }
