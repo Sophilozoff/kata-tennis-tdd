@@ -59,7 +59,6 @@ public class CompteurDeScoreTennisTest {
         partie.getJoueurDeux().setPoint(1);
         compteurDeScoreTennis.evaluerPoint(partie);
         assertEquals(1, partie.getJoueurUn().getJeu());
-        assertEquals("0/0", compteurDeScoreTennis.evaluerPoint(partie));
     }
 
     @Test
@@ -69,12 +68,14 @@ public class CompteurDeScoreTennisTest {
         partie.getJoueurDeux().setPoint(5);
         compteurDeScoreTennis.evaluerPoint(partie);
         assertEquals(1, partie.getJoueurDeux().getJeu());
-        assertEquals("0/0", compteurDeScoreTennis.evaluerPoint(partie));
     }
 
     @Test
-    @DisplayName("Devrait retourner 0 points au joueurs après un jeu gagné")
+    @DisplayName("Devrait retourner 0 points aux joueurs après un jeu gagné")
     public void joueurZeroPointApresJeuGagne() {
+        partie.getJoueurUn().setPoint(3);
+        partie.getJoueurDeux().setPoint(5);
+        assertEquals("0/0", compteurDeScoreTennis.evaluerPoint(partie));
     }
 
     @Test
