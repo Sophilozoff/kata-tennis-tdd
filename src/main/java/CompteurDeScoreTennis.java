@@ -58,20 +58,25 @@ public class CompteurDeScoreTennis {
        return afficherPointEnCours(partie);
     }
 
-    public  evaluerJeu(Partie partie){
+    public void evaluerJeu(Partie partie){
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
         int jeuJ1 = j1.getJeu();
         int jeuJ2 = j2.getJeu();
 
+
         //si une des deux joueur a 6 jeux et que l'autre a 4 ou mois
-        if (j1.getJeu() == 6 &&  j2.getJeu() < 4) {
-            ajoutSet(j1);
-            reinitialiseJeu(partie);
-        } else if (j2.getJeu() == 6 &&  j1.getJeu() < 4) {
-            ajoutSet(j2);
-            reinitialiseJeu(partie);
+        //si Setj1 >5 et math.abs(jeuJ1+jeuJ2)
+        if (j1.getJeu()>5 || j2.getJeu()>5 && Math.abs(j1.getJeu()-j2.getJeu())>=2){
+            if (j1.getJeu() == 6 ) {
+                ajoutSet(j1);
+                reinitialiseJeu(partie);
+            } else if (j2.getJeu() == 6) {
+                ajoutSet(j2);
+                reinitialiseJeu(partie);
+            }
         }
+
         //alors joueur gagne un set
 
     }

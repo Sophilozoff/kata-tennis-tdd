@@ -83,6 +83,7 @@ public class CompteurDeScoreTennisTest {
         for (int i = 0; i < 6; i++) {
             partie.getJoueurUn().setPoint(3);
             partie.getJoueurDeux().setPoint(5);
+            compteurDeScoreTennis.evaluerPoint(partie);
         }
         compteurDeScoreTennis.evaluerJeu(partie);
         assertEquals(1,partie.getJoueurDeux().getSet());
@@ -90,8 +91,12 @@ public class CompteurDeScoreTennisTest {
     }
 
     @Test
-    @DisplayName("Devrait retourné un set gagné lorsque le nombre de jeux >=5 et que l'écart entre les joueurs est = 2")
+    @DisplayName("Devrait retourné un set gagné lorsque le nombre de jeux >=5 et que l'écart entre les joueurs est >=2")
     public void joueurGagneUnSetApresEgaliteDeJeux() {
+            partie.getJoueurUn().setJeu(3);
+            partie.getJoueurDeux().setJeu(6);
+        compteurDeScoreTennis.evaluerJeu(partie);
+        assertEquals(1,partie.getJoueurDeux().getSet());
     }
 
     @Test
