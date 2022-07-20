@@ -54,4 +54,11 @@ public class Joueur {
     public void ajoutSet(){
         this.set +=1;
     }
+
+    public void initPoint(){
+        this.point=0;
+    }
+    public void initJeu(){
+        this.jeu=0;
+    }
 }

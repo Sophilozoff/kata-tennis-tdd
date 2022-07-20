@@ -43,4 +43,14 @@ public class Partie {
     public void setJoueurDeux(Joueur joueurDeux) {
         this.joueurDeux = joueurDeux;
     }
+
+    public void initPoint(){
+        joueurUn.initPoint();
+        joueurDeux.initPoint();
+    }
+
+    public void initJeux(){
+        joueurUn.initJeu();
+        joueurDeux.initJeu();
+    }
 }
