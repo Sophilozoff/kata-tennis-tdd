@@ -92,9 +92,10 @@ public class CompteurDeScoreTennisTest {
     @Test
     @DisplayName("Devrait retourné un set gagné lorsque le nombre de jeux >=5 et que l'écart entre les joueurs est >=2")
     public void joueurGagneUnSetApresEgaliteDeJeux() {
+        partie.setJeuDecisif(false);
         partie.getJoueurUn().setJeu(5);
         partie.getJoueurDeux().setJeu(7);
-        compteurDeScoreTennis.getScore(partie);
+        compteurDeScoreTennis.evaluerJeu(partie);
         assertEquals(1, partie.getJoueurDeux().getSet());
     }
 
