@@ -44,7 +44,12 @@ public class CompteurDeScoreTennis {
             j1.setPoint(3);
             j2.setPoint(3);
         }
+       return afficherPointEnCours(partie);
+    }
 
+    private String afficherPointEnCours(Partie partie){
+        Joueur j1 = partie.getJoueurUn();
+        Joueur j2 = partie.getJoueurDeux();
         //(si 40/40 : égalité)
         if (j1.getPoint() == 3 && j2.getPoint() == 3) {
             return afficherPoint(5);
@@ -57,7 +62,6 @@ public class CompteurDeScoreTennis {
         } else {
             return afficherPoint(j1.getPoint()) + "/" + afficherPoint(j2.getPoint());
         }
-
     }
 
     private String afficherPoint(int point) {
