@@ -83,6 +83,7 @@ public class CompteurDeScoreTennisTest {
         for (int i = 0; i < 6; i++) {
             partie.getJoueurUn().setPoint(3);
             partie.getJoueurDeux().setPoint(5);
+            compteurDeScoreTennis.evaluerPoint(partie);
         }
         compteurDeScoreTennis.evaluerJeu(partie);
         assertEquals(1,partie.getJoueurDeux().getSet());

@@ -58,7 +58,7 @@ public class CompteurDeScoreTennis {
        return afficherPointEnCours(partie);
     }
 
-    public  evaluerJeu(Partie partie){
+    public void evaluerJeu(Partie partie){
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
         int jeuJ1 = j1.getJeu();
