@@ -10,7 +10,10 @@ public class CompteurDeScoreTennis {
     }
 
     public void ajoutPoint(Joueur joueur) {
-        joueur.ajoutPoint();
+        if(!partie.isFinie()){
+            joueur.ajoutPoint();
+        }
+
     }
 
     public void ajoutJeu(Joueur joueur) {
@@ -24,9 +27,11 @@ public class CompteurDeScoreTennis {
 
     public String getScore(Partie partie) {
 
-        if(partie.getJoueurUn().getJeu() == 2) {
+        if (partie.getJoueurUn().getSet() == 2) {
+            partie.setFinie(true);
             return partie.getJoueurUn().getNom() + " vainqueur";
-        } else if ( partie.getJoueurDeux().getJeu() == 2) {
+        } else if (partie.getJoueurDeux().getSet() == 2) {
+            partie.setFinie(true);
             return partie.getJoueurDeux().getNom() + " vainqueur";
         }
         evaluerJeu(partie);
@@ -74,7 +79,7 @@ public class CompteurDeScoreTennis {
             return "Jeu décisif à venir";
         }
 
-        if (j1.getJeu() > 5 || j2.getJeu() > 5 && Math.abs(j1.getJeu() - j2.getJeu()) >= 2) {
+        if (Math.abs(j1.getJeu() - j2.getJeu()) >= 2) {
             if (j1.getJeu() >= 6) {
                 ajoutSet(j1);
             } else if (j2.getJeu() >= 6) {
@@ -90,7 +95,7 @@ public class CompteurDeScoreTennis {
         Joueur j1 = partie.getJoueurUn();
         Joueur j2 = partie.getJoueurDeux();
 
-        if (j1.getPoint() >= 7 || j2.getPoint() >= 7 && Math.abs(j1.getPoint() - j2.getPoint()) >= 2) {
+        if (Math.abs(j1.getPoint() - j2.getPoint()) >= 2) {
             if (j1.getPoint() >= 7) {
                 ajoutSet(j1);
             } else if (j2.getPoint() >= 7) {

@@ -6,6 +6,8 @@ public class Partie {
     private Joueur joueurUn;
     private Joueur joueurDeux;
     private boolean jeuDecisif= false;
+    private boolean finie = false;
+
 
 
     public Partie() {
@@ -47,6 +49,14 @@ public class Partie {
 
     public boolean isJeuDecisif() {
         return jeuDecisif;
+    }
+
+    public boolean isFinie() {
+        return finie;
+    }
+
+    public void setFinie(boolean finie) {
+        this.finie = finie;
     }
 
     public void setJeuDecisif(boolean jeuDecisif) {

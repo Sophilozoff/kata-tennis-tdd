@@ -59,7 +59,7 @@ public class CreateurPartieTest {
     @Test
     @DisplayName("Devrait retourné Partie Gagnée lorsque 2 sets sont gagnés par un joueur")
     public void joueurGagnePartie() {
-        j1.setJeu(2);
+        j1.setSet(2);
 
         assertEquals(j1.getNom() + " vainqueur", compteurDeScoreTennis.getScore(partie));
     }
@@ -67,11 +67,18 @@ public class CreateurPartieTest {
     @Test
     @DisplayName("Devrait lever une exception car la partie est terminée")
     public void ajoutPointPartieFinie() {
+        j1.setSet(2);
+        compteurDeScoreTennis.getScore(partie);
+        compteurDeScoreTennis.ajoutPoint(j1);
+        assertEquals(0,j1.getPoint());
     }
 
     @Test
     @DisplayName("Devrait renvoyer une notification pour partie finie")
     public void notificationPartieFinie() {
+        j1.setSet(2);
+        compteurDeScoreTennis.getScore(partie);
+        assertTrue(partie.isFinie());
     }
 
 }
