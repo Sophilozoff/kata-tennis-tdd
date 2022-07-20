@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CompteurDeScoreTennisTest {
 
-
     Joueur j1 = new Joueur("j1");
     Joueur j2 = new Joueur("j2");
     Partie partie = new Partie("test", j1, j2);
@@ -27,11 +26,12 @@ public class CompteurDeScoreTennisTest {
     @Test
     @DisplayName("Devrait afficher les points de 0 à 15, 15 à 30, 30 à 40")
     public void echelonPointGagnes() {
+        partie.setJeuDecisif(false);
         String scoreFinalAttendu = "15/40";
         partie.getJoueurUn().setPoint(1);
         partie.getJoueurDeux().setPoint(3);
 
-        assertEquals(scoreFinalAttendu, compteurDeScoreTennis.evaluerPoint(partie));
+        assertEquals(scoreFinalAttendu, compteurDeScoreTennis.getScore(partie));
     }
 
     @Test
@@ -119,7 +119,12 @@ public class CompteurDeScoreTennisTest {
     @Test
     @DisplayName("Devrait ajouter les points 1 à 1 jusqu'à 7 en jeu décisif")
     public void ajoutePointUnParUnJeuDecisif() {
+        partie.setJeuDecisif(true);
+        String scoreFinalAttendu = "1/3";
+        partie.getJoueurUn().setPoint(1);
+        partie.getJoueurDeux().setPoint(3);
 
+        assertEquals(scoreFinalAttendu, compteurDeScoreTennis.getScore(partie));
     }
 
     @Test
